@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valorant Agents - Full Detail</title>
+    <style>
+      /* CSS Dasar */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial Black", sans-serif;
+      }
+      body {
+        background-color: #0f1923;
+        color: white;
+      }
+
+      /* Navbar */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 50px;
+        background: #111;
+        border-bottom: 2px solid #2b2b2b;
+      }
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+      }
+      .btn-main {
+        background-color: #ff4655;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+
+      .title {
+        font-size: 80px;
+        padding: 50px;
+        letter-spacing: 5px;
+        text-align: center;
+      }
+
+      /* Grid Layout (Halaman Utama) */
+      .agent-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 0 50px 100px 50px;
+      }
+      .agent-card {
+        background: #1e2832;
+        overflow: hidden;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.2s;
+      }
+      .agent-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      }
+
+      .img-container {
+        background-color: #292929;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 350px;
+      }
+      .agent-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 0.4s ease;
+      }
+      .agent-card:hover img {
+        transform: scale(1.15);
+      }
+
+      .agent-name {
+        padding: 15px;
+        font-size: 20px;
+        text-transform: uppercase;
+        background-color: #1e2832;
+        text-align: center;
+      }
+
+      /* --- CSS HALAMAN DETAIL --- */
+      #agent-detail {
+        display: none;
+        padding: 50px;
+        flex-direction: column;
+        align-items: center;
+        max-width: 1200px;
+        margin: auto;
+      }
+      .btn-back {
+        align-self: flex-start;
+        background: #333;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 16px;
+        border-radius: 4px;
+        margin-bottom: 30px;
+      }
+      .btn-back:hover {
+        background: #ff4655;
+      }
+
+      /* Layout Detail Atas (Gambar + Info) */
+      .detail-header {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 50px;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 50px;
+        justify-content: center;
+      }
+      #detail-img {
+        width: 350px;
+        height: auto;
+        object-fit: contain;
+        background-color: #1e2832;
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      .detail-info {
+        flex: 1;
+        min-width: 300px;
+      }
+      #detail-name {
+        font-size: 80px;
+        color: #ff4655;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        line-height: 1;
+      }
+
+      .role-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+        background: #1e2832;
+        display: inline-flex;
+        padding: 10px 20px;
+        border-radius: 5px;
+      }
+      #detail-role-icon {
+        width: 25px;
+        height: 25px;
+        filter: invert(1);
+      } /* invert(1) biar icon putih */
+      #detail-role-name {
+        font-size: 20px;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      #detail-desc {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #ece8e1;
+        font-family: "Arial", sans-serif;
+        font-weight: normal;
+      }
+
+      /* Section Kemampuan (Skill) */
+      .abilities-title {
+        width: 100%;
+        font-size: 40px;
+        border-bottom: 2px solid #333;
+        padding-bottom: 10px;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+      }
+      .abilities-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        width: 100%;
+      }
+
+      .ability-card {
+        background: #1e2832;
+        padding: 30px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      .ability-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 10px;
+      }
+      .ability-name {
+        font-size: 22px;
+        color: #ff4655;
+        text-transform: uppercase;
+      }
+      .ability-desc {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #ccc;
+        font-family: "Arial", sans-serif;
+        font-weight: normal;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #000;
+        text-align: center;
+        padding: 50px;
+        font-size: 12px;
+        margin-top: 50px;
+      }
+      .footer-links {
+        margin-top: 20px;
+      }
+      .footer-links a {
+        color: #888;
+        text-decoration: none;
+        margin: 0 10px;
+      }
+      .footer-links a:hover {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">RIOT GAMES</div>
+        <ul>
+          <li>INFO GAME</li>
+          <li>MEDIA</li>
+          <li>ARTIKEL</li>
+          <li>SUPPORT</li>
+        </ul>
+        <button class="btn-main">MAIN SEKARANG</button>
+      </nav>
+    </header>
+
+    <main>
+      <h1 class="title" id="main-title">AGEN</h1>
+
+      <div class="agent-grid" id="agent-container">
+        <h3 style="padding-left: 50px" id="loading-text">
+          Sedang memuat data agen...
+        </h3>
+      </div>
+
+      <div id="agent-detail">
+        <button class="btn-back" onclick="closeDetail()">
+          &#8592; KEMBALI
+        </button>
+
+        <div class="detail-header">
+          <img id="detail-img" src="" alt="Agent Image" />
+          <div class="detail-info">
+            <h2 id="detail-name">NAMA AGEN</h2>
+            <div class="role-container">
+              <img id="detail-role-icon" src="" alt="Role Icon" />
+              <span id="detail-role-name">ROLE</span>
+            </div>
+            <p id="detail-desc">Deskripsi agen akan muncul di sini.</p>
+          </div>
+        </div>
+
+        <h3 class="abilities-title">KEMAMPUAN KHUSUS</h3>
+        <div class="abilities-container" id="detail-abilities"></div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="social-icons">
+        <span>FB</span> <span>YT</span> <span>IG</span>
+      </div>
+      <p>&copy; 2020-2026 Riot Games, Inc.</p>
+      <div class="footer-links">
+        <a href="#">KEBIJAKAN PRIVASI</a>
+        <a href="#">KETENTUAN PENGGUNAAN</a>
+        <a href="#">PREFERENSI COOKIE</a>
+      </div>
+    </footer>
+
+    <script>
+      const agentContainer = document.getElementById("agent-container");
+      const loadingText = document.getElementById("loading-text");
+
+      const mainTitle = document.getElementById("main-title");
+      const detailSection = document.getElementById("agent-detail");
+
+      // Mengambil data dari API
+      fetch("https://valorant-api.com/v1/agents?isPlayableCharacter=true")
+        .then((response) => response.json())
+        .then((data) => {
+          const agents = data.data;
+          loadingText.style.display = "none";
+
+          agents.forEach((agent) => {
+            const agenNama = agent.displayName;
+            const agenGambar = agent.fullPortraitV2;
+            const agenDeskripsi = agent.description;
+            const agenRole = agent.role; // Ekstrak Role
+            const agenAbilities = agent.abilities; // Ekstrak Array Skill
+
+            if (agenGambar) {
+              const agentCard = document.createElement("div");
+              agentCard.classList.add("agent-card");
+
+              agentCard.innerHTML = `
+                            <div class="img-container">
+                                <img src="${agenGambar}" alt="${agenNama}">
+                            </div>
+                            <div class="agent-name">${agenNama.toUpperCase()}</div>
+                        `;
+
+              // Panggil openDetail dengan data lengkap saat diklik
+              agentCard.addEventListener("click", () => {
+                openDetail(
+                  agenNama,
+                  agenDeskripsi,
+                  agenGambar,
+                  agenRole,
+                  agenAbilities,
+                );
+              });
+
+              agentContainer.appendChild(agentCard);
+            }
+          });
+        })
+        .catch((error) => {
+          loadingText.innerText = "Gagal memuat API.";
+          console.error("Gagal memuat API:", error);
+        });
+
+      // FUNGSI MEMBUKA HALAMAN DETAIL BESERTA SKILL
+      function openDetail(nama, deskripsi, gambar, role, abilities) {
+        agentContainer.style.display = "none";
+        mainTitle.style.display = "none";
+
+        // Masukkan Data Dasar
+        document.getElementById("detail-name").innerText = nama;
+        document.getElementById("detail-desc").innerText = deskripsi;
+        document.getElementById("detail-img").src = gambar;
+
+        // Masukkan Data Role (Pastikan Role Tidak Kosong)
+        if (role) {
+          document.getElementById("detail-role-name").innerText =
+            role.displayName;
+          document.getElementById("detail-role-icon").src = role.displayIcon;
+          document.getElementById("detail-role-icon").style.display = "block";
+        } else {
+          document.getElementById("detail-role-name").innerText =
+            "Tidak Diketahui";
+          document.getElementById("detail-role-icon").style.display = "none";
+        }
+
+        // Kosongkan container skill sebelumnya
+        const abilitiesContainer = document.getElementById("detail-abilities");
+        abilitiesContainer.innerHTML = "";
+
+        // Masukkan Data Skill (Perulangan untuk 4 Skill)
+        if (abilities && abilities.length > 0) {
+          abilities.forEach((ability) => {
+            // Hanya tampilkan skill yang punya gambar icon (mengabaikan pasif yang tidak ada icon)
+            if (ability.displayIcon) {
+              const abilityCard = document.createElement("div");
+              abilityCard.classList.add("ability-card");
+
+              abilityCard.innerHTML = `
+                            <img class="ability-icon" src="${ability.displayIcon}" alt="${ability.displayName}">
+                            <h4 class="ability-name">${ability.displayName}</h4>
+                            <p class="ability-desc">${ability.description}</p>
+                        `;
+
+              abilitiesContainer.appendChild(abilityCard);
+            }
+          });
+        }
+
+        // Tampilkan Bagian Detail
+        detailSection.style.display = "flex";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      // FUNGSI TOMBOL KEMBALI
+      function closeDetail() {
+        detailSection.style.display = "none";
+        agentContainer.style.display = "grid";
+        mainTitle.style.display = "block";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>
