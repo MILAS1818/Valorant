@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valorant Maps - Detail Aset</title>
+    <link rel="stylesheet" href="maps.css" />
+  </head>
+  <body>
+    <main>
+      <h1 class="title" id="main-title">MAPS VALORANT</h1>
+
+      <div class="map-grid" id="map-container">
+        <h3 style="padding-left: 50px" id="loading-text">
+          Sedang memuat data maps...
+        </h3>
+      </div>
+
+      <div id="map-detail">
+        <button class="btn-back" onclick="closeDetail()">
+          &#8592; KEMBALI
+        </button>
+        <img id="detail-img" class="detail-splash" src="" alt="Map Splash" />
+
+        <div class="detail-info">
+          <h2 id="detail-name">NAMA MAP</h2>
+          <p class="info-item">
+            <span>Deskripsi Taktis:</span>
+            <span
+              id="detail-tactical"
+              style="font-family: Arial; font-weight: normal"
+              >-</span
+            >
+          </p>
+          <p class="info-item">
+            <span>Koordinat:</span>
+            <span
+              id="detail-coords"
+              style="font-family: Arial; font-weight: normal"
+              >-</span
+            >
+          </p>
+
+          <h3 class="asset-title">KOLEKSI ASET GAMBAR</h3>
+          <div class="asset-gallery" id="detail-gallery"></div>
+        </div>
+      </div>
+    </main>
+
+    <script src="maps.js"></script>
+  </body>
+</html>

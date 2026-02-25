@@ -1,0 +1,278 @@
+/* CSS Dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial Black", sans-serif;
+}
+body {
+  background-color: #0f1923;
+  color: white;
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: #111;
+  border-bottom: 2px solid #2b2b2b;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  align-items: center;
+}
+.btn-main {
+  background-color: #ff4655;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* --- CSS DROPDOWN MENU BARU --- */
+.dropdown {
+  position: relative;
+  cursor: pointer;
+  padding: 10px 0;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #111;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  border: 1px solid #2b2b2b;
+  border-radius: 4px;
+  flex-direction: column;
+}
+.dropdown.active .dropdown-content {
+  display: flex;
+}
+.menu-btn {
+  background: transparent;
+  color: white;
+  border: none;
+  padding: 15px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid #2b2b2b;
+}
+.menu-btn:hover {
+  background-color: #ff4655;
+}
+.menu-btn:last-child {
+  border-bottom: none;
+}
+/* ------------------------------ */
+
+.title {
+  font-size: 80px;
+  padding: 50px;
+  letter-spacing: 5px;
+  text-align: center;
+}
+
+/* Grid Layout (Halaman Utama) */
+.agent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 0 50px 100px 50px;
+}
+.agent-card {
+  background: #1e2832;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s;
+}
+.agent-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.img-container {
+  background-color: #292929;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 350px;
+}
+.agent-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+.agent-card:hover img {
+  transform: scale(1.15);
+}
+
+.agent-name {
+  padding: 15px;
+  font-size: 20px;
+  text-transform: uppercase;
+  background-color: #1e2832;
+  text-align: center;
+}
+
+/* --- CSS HALAMAN DETAIL --- */
+#agent-detail {
+  display: none;
+  padding: 50px;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+}
+.btn-back {
+  align-self: flex-start;
+  background: #333;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 4px;
+  margin-bottom: 30px;
+}
+.btn-back:hover {
+  background: #ff4655;
+}
+
+.detail-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 50px;
+  justify-content: center;
+}
+#detail-img {
+  width: 350px;
+  height: auto;
+  object-fit: contain;
+  background-color: #1e2832;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.detail-info {
+  flex: 1;
+  min-width: 300px;
+}
+#detail-name {
+  font-size: 80px;
+  color: #ff4655;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  line-height: 1;
+}
+
+.role-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  background: #1e2832;
+  display: inline-flex;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+#detail-role-icon {
+  width: 25px;
+  height: 25px;
+  filter: invert(1);
+}
+#detail-role-name {
+  font-size: 20px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+#detail-desc {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #ece8e1;
+  font-family: "Arial", sans-serif;
+  font-weight: normal;
+}
+
+/* Section Kemampuan (Skill) */
+.abilities-title {
+  width: 100%;
+  font-size: 40px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+.abilities-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  width: 100%;
+}
+
+.ability-card {
+  background: #1e2832;
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.ability-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+.ability-name {
+  font-size: 22px;
+  color: #ff4655;
+  text-transform: uppercase;
+}
+.ability-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ccc;
+  font-family: "Arial", sans-serif;
+  font-weight: normal;
+}
+
+/* Footer */
+footer {
+  background-color: #000;
+  text-align: center;
+  padding: 50px;
+  font-size: 12px;
+  margin-top: 50px;
+}
+.footer-links {
+  margin-top: 20px;
+}
+.footer-links a {
+  color: #888;
+  text-decoration: none;
+  margin: 0 10px;
+}
+.footer-links a:hover {
+  color: white;
+}

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valorant Weapons</title>
+    <link rel="stylesheet" href="weapons.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div id="error-box" class="hidden">
+        <h2>❌ Gagal Memuat Data</h2>
+        <p id="error-msg"></p>
+      </div>
+
+      <h3 id="loading-text">Memuat data...</h3>
+
+      <div id="main-view" class="hidden">
+        <h1>Pilih Senjata</h1>
+        <div class="grid-container" id="weapons-list"></div>
+      </div>
+
+      <div id="skins-view" class="hidden">
+        <button class="btn" onclick="showMainView()">
+          ⬅ Kembali ke Senjata
+        </button>
+        <h2 id="weapon-title">Daftar Skin</h2>
+        <div class="grid-container" id="skins-list"></div>
+      </div>
+
+      <div id="skin-detail-view" class="hidden">
+        <button class="btn" onclick="showSkinsView()">
+          ⬅ Kembali ke Daftar Skin
+        </button>
+        <div class="detail-container">
+          <h2 id="detail-title">Nama Skin</h2>
+
+          <div id="detail-video"></div>
+
+          <div class="info-section" id="detail-levels"></div>
+
+          <div class="info-section" id="detail-chromas"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="weapons.js"></script>
+  </body>
+</html>
