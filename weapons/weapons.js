@@ -146,6 +146,7 @@ function showSkinDetail(skin) {
 function showMainView() {
   document.getElementById("skins-view").classList.add("hidden");
   document.getElementById("main-view").classList.remove("hidden");
+  
 }
 
 function showSkinsView() {

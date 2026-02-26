@@ -29,6 +29,7 @@ h3 {
   letter-spacing: 2px;
 }
 
+
 /* Menggunakan CSS Grid agar lebih rapi dan responsif */
 .grid-container {
   display: grid;

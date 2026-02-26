@@ -7,6 +7,40 @@
     <link rel="stylesheet" href="maps.css" />
   </head>
   <body>
+    <header>
+      <nav>
+        <div class="logo">RIOT GAMES</div>
+        <ul>
+          <li class="dropdown" onclick="toggleMenu(event)">
+            INFO GAME &#9662;
+            <div class="dropdown-content" id="infoMenu">
+              <a href="/agen/agen.html">
+                <button class="menu-btn" onclick="showSection('agents', event)">
+                  AGEN
+                </button>
+              </a>
+
+              <a href="/maps/maps.html">
+                <button class="menu-btn" onclick="showSection('maps', event)">
+                  MAPS
+                </button>
+              </a>
+
+              <a href="/weapons/weapons.html">
+                <button class="menu-btn" onclick="showSection('skins', event)">
+                  SKIN SENJATA
+                </button>
+              </a>
+            </div>
+          </li>
+          <li>MEDIA</li>
+          <li>ARTIKEL</li>
+          <li>SUPPORT</li>
+        </ul>
+        <button class="btn-main">MAIN SEKARANG</button>
+      </nav>
+    </header>
+
     <main>
       <h1 class="title" id="main-title">MAPS VALORANT</h1>
 
